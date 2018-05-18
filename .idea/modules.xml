@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../DynamicForms/DynamicForm/.idea/DynamicForm.iml" filepath="$PROJECT_DIR$/../DynamicForms/DynamicForm/.idea/DynamicForm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Latest_CV.iml" filepath="$PROJECT_DIR$/.idea/Latest_CV.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../office_projects/Sindh Education Foundation/WebApp/SEFWebApp/.idea/SEFWebApp.iml" filepath="$PROJECT_DIR$/../office_projects/Sindh Education Foundation/WebApp/SEFWebApp/.idea/SEFWebApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../School_New/.idea/School_New.iml" filepath="$PROJECT_DIR$/../School_New/.idea/School_New.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../office_projects/pehel/.idea/pehel.iml" filepath="$PROJECT_DIR$/../office_projects/pehel/.idea/pehel.iml" />
+    </modules>
+  </component>
+</project>

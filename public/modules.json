@@ -1,0 +1,120 @@
+{
+              "Administration": [
+                {
+                  "Module": "Administration",
+                  "ModuleName": "System Settings",
+                  "Component": "Users",
+                  "ComponentName": "Users",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                },
+                {
+                  "Module": "Administration",
+                  "ModuleName": "Admin",
+                  "Component": "SystemLog",
+                  "ComponentName": "System Log",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                },
+                {
+                  "Module": "Administration",
+                  "ModuleName": "Admin",
+                  "Component": "Districts",
+                  "ComponentName": "Districts",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                },
+                {
+                  "Module": "Administration",
+                  "ModuleName": "Admin",
+                  "Component": "Talukas",
+                  "ComponentName": "Talukas",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                },
+                {
+                  "Module": "Administration",
+                  "ModuleName": "Admin",
+                  "Component": "UCS",
+                  "ComponentName": "UCS",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                }
+              ],
+              "Programs": [
+                {
+                  "Module": "Programs",
+                  "ModuleName": "Programs",
+                  "Component": "Programs",
+                  "ComponentName": "Programs",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                }
+              ],
+              "IndicatorsBank": [
+                {
+                  "Module": "IndicatorsBank",
+                  "ModuleName": "Indicators Bank",
+                  "Component": "IndicatorsBank",
+                  "ComponentName": "Indicators Bank",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                }
+              ],
+              "Activity": [
+                {
+                  "Module": "Activity",
+                  "ModuleName": "Tool Designing",
+                  "Component": "ViewActivities",
+                  "ComponentName": "View Tools",
+                  "IconType": "0",
+                  "Icon": "fa-file"
+                }
+              ],
+              "Plan":[
+                {
+                  "Module": "Programs",
+                  "ModuleName": "Plan/Activity",
+                  "Component": "Plan",
+                  "ComponentName": "Plan/Activity",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                }
+              ],
+              "DashboardDesign":[
+                {
+                  "Module": "DashboardDesign",
+                  "ModuleName": "Dashboard Design",
+                  "Component": "Design",
+                  "ComponentName": "Design",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                }
+              ],
+              "ApprovalScreen":[
+                {
+                  "Module": "ApprovalScreen",
+                  "ModuleName": "Approval Screen",
+                  "Component": "DataMonitoring",
+                  "ComponentName": "Data Monitoring",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                },
+                {
+                  "Module": "ApprovalScreen",
+                  "ModuleName": "Approval Screen",
+                  "Component": "BeneficiariesData",
+                  "ComponentName": "Beneficiaries Data",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                },
+                {
+                  "Module": "ApprovalScreen",
+                  "ModuleName": "Approval Screen",
+                  "Component": "SyncToSecondary",
+                  "ComponentName": "Sync To Secondary",
+                  "IconType": "0",
+                  "Icon": "fa-users"
+                }
+              ]
+            }
