@@ -97,3 +97,5 @@ Route::get('System/Error/AccessDenied',function(){ return view("Errors/Permissio
 
 // Email Routes
 Route::get('Email/Send/TestMail',"EmailController@SendTestEmail")->name('SendTestEmail');
+
+

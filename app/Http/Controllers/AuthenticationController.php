@@ -122,11 +122,10 @@ class AuthenticationController extends Controller
                 return  view("Authentication/MainPage",$aData);
             }
             else 
-            return "<center><h2>User unauthenticate</h2></center>";
-
+            return view('Errors/Errors',["Error"=>"AuthFaild"]);
         }
         else 
-        return "<center><h2>Authentication Token Expired..</h2></center>";
+            return view('Errors/Errors',["Error"=>"AccessToken"]);
     } 
 
     public function UpdateNewPassword()
@@ -149,7 +148,8 @@ class AuthenticationController extends Controller
               return ["Message"=>"There are some System problims Sorry.!"];
         }
         else 
-          return "<center><h2>Authentication Token Expired..</h2></center>";
+             return view('Errors/Errors',["Error"=>"AccessToken"]);
+        
 
        
     }
