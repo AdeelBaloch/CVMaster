@@ -131,18 +131,27 @@ class AuthenticationController extends Controller
 
     public function UpdateNewPassword()
     {
-     
-         $iUserId = Crypt::decrypt(Input::get('sUserId'));
-         $sPassword = Crypt::encrypt(Input::get('Password'));
+        $aUserToken = explode('|',Crypt::decrypt(Input::get('sUserToken')));
+        $sPassword = Crypt::encrypt(Input::get('Password'));
 
-        if(DB::table('users')->where('UserId',$iUserId)->update(["Password"=>$sPassword,"UserUpdatedOn"=>date('Y-m-d H:m:s a'),'LastLoggedInDateTime' => date("Y-m-d H:i:s")]))
-        {   
-            Session::put("UserId",$iUserId);
-            $this->ObjUser->AddLog("Password Recoverd Successuly");
-            return ["URL"=>route("home")];
+        $iUserId = $aUserToken[0];
+        $dExpireTime = $aUserToken[1];
+        
+        if($dExpireTime > date("Y/m/d H:i:s", strtotime("now")))
+        {
+            if(DB::table('users')->where('UserId',$iUserId)->update(["Password"=>$sPassword,"UserUpdatedOn"=>date('Y-m-d H:m:s a'),'LastLoggedInDateTime' => date("Y-m-d H:i:s")]))
+            {   
+                Session::put("UserId",$iUserId);
+                $this->ObjUser->AddLog("Password Recoverd Successuly");
+                return ["URL"=>route("home")];
+            }
+            else 
+              return ["Message"=>"There are some System problims Sorry.!"];
         }
         else 
-          return ["Message"=>"There are some System problims Sorry.!"];
+          return "<center><h2>Authentication Token Expired..</h2></center>";
+
+       
     }
      
 }

@@ -10,7 +10,7 @@
 					<i class="fa fa-lock"></i>
 				</div>
 				{!! csrf_field() !!}
-				<input type="hidden" name="sUserId" value="{{ $sUserId }}">
+				<input type="hidden" name="sUserToken" value="{{ $sUserToken }}">
 				<div class="login-mail">
 					<input type="password" placeholder="Repeated password" required name="PasswordConfirm" id="PasswordConfirm" maxlength="14">
 					<i class="fa fa-lock"></i>

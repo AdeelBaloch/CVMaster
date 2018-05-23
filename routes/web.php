@@ -48,9 +48,9 @@ Route::get("Authentication/User/SignUp",function(){ return  view("Authentication
 Route::POST("Authentication/User/SignUp","AuthenticationController@SignUp")->name('SignUp');
 Route::any("Authentication/Account/User/ForgetPassword",function(){ return view("Authentication/ForgetPassword"); })->name('ForgetPassword');
 Route::POST("Authentication/Account/User/SendResetPasswordLink","AuthenticationController@SendResetLink")->name('SendResetLink');
-Route::get("Authentication/Account/User/ResetPasswordForm/{UserId?}",function($UserId){ 
+Route::get("Authentication/Account/User/ResetPasswordForm/{sUserToken?}",function($sUserToken){ 
     
-    return view("Authentication/ResetPassword",["sUserId"=>$UserId]); 
+    return view("Authentication/ResetPassword",["sUserToken"=>$sUserToken]); 
 
 })->name('ResetPassword');
 Route::get("Authentication/Account/User/CheckResetlinkValid/{UserId}","AuthenticationController@CheckResetlinkValid")->name('CheckResetlinkValid');
