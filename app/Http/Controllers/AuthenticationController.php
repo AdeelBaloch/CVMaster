@@ -88,9 +88,11 @@ class AuthenticationController extends Controller
 
         if($ObjQuery->count() > 0 ){
          $sName = $ObjQuery->first()->FirstName." ".$ObjQuery->first()->LastName;
-         $iUserId = Crypt::encrypt($ObjQuery->first()->UserId);
+         $sUserToken = Crypt::encrypt($ObjQuery->first()->UserId."|".date("Y/m/d H:i:s", strtotime("+15 Minutes")));
+
          
-         $sResetLink = route('CheckResetlinkValid',$iUserId);
+         $sResetLink = route('CheckResetlinkValid',$sUserToken);
+         
          $sMessage = "Please click the flowing link to Reset your Password";   
          $bSent = $this->ObjEmail->SendEmailResetLink(["Name"=>$sName,"Message"=>$sMessage,'sLink'=>$sResetLink],$sEmailAddress,"Reset Password Link");
         
@@ -104,19 +106,27 @@ class AuthenticationController extends Controller
             
     } 
 
-    public function CheckResetlinkValid($UserId)
+    public function CheckResetlinkValid($sUserToken)
     {
-     
-        $iUserId = Crypt::decrypt($UserId);
-        $ObjQuery =  DB::table('users')->where('UserId',$iUserId);
+        $aUserToken = explode('|',Crypt::decrypt($sUserToken));
+        $iUserId = $aUserToken[0];
+        $dExpireTime = $aUserToken[1];
+        
+        if($dExpireTime > date("Y/m/d H:i:s", strtotime("now"))){
+           
+            $ObjQuery =  DB::table('users')->where('UserId',$iUserId);
           
-        if($ObjQuery->count() > 0){
-          
-            $aData = ["sDefaultPage"=>route('ResetPassword',last(request()->segments()))];
-            return  view("Authentication/MainPage",$aData);
+            if($ObjQuery->count() > 0){
+              
+                $aData = ["sDefaultPage"=>route('ResetPassword',last(request()->segments()))];
+                return  view("Authentication/MainPage",$aData);
+            }
+            else 
+            return "<center><h2>User unauthenticate</h2></center>";
+
         }
         else 
-        return "<center><h2>404 Not Found</h2></center>";
+        return "<center><h2>Authentication Token Expired..</h2></center>";
     } 
 
     public function UpdateNewPassword()
