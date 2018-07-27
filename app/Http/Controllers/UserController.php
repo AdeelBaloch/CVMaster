@@ -105,11 +105,12 @@ class UserController extends Controller
         return  "Work In Progress";
     }
 
-    // public function UserRoles($iUserId)
-    // {
-    //     echo "<pre>";
-    //     print_r($this->UserInformation($iUserId));
-    //     // $sUserRoles = $this->UserInformation($iUserId)->UserRoles;
-    //     // return unserialize($sUserRoles);
-    // }
+    public function test()
+    {
+        // $homepage = file_get_contents('http://www.google.com/');
+        // echo $homepage;
+     
+                return view("test");
+            
+    }
 }

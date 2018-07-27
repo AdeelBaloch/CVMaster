@@ -99,3 +99,20 @@ Route::get('System/Error/AccessDenied',function(){ return view("Errors/Permissio
 Route::get('Email/Send/TestMail',"EmailController@SendTestEmail")->name('SendTestEmail');
 
 
+// Errors Managment
+Route::get("Error/{sError?}",function($sError){
+    
+    return view('Errors/Errors',["Error"=>$sError]);
+})->name('ShowError');   
+
+// for testing
+Route::get("CVTemplates/",function(){
+    return view('CVViews/CVTemplates/template1');
+})->name('CVtemplate');   
+
+Route::get("Charts/",function(){
+    return view('ChartsViews/Barchart');
+});   
+
+
+Route::get("User/url/test/","UserController@test")->name("test");

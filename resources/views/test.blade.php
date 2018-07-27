@@ -1,21 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 
-			<div id="results"></div>
-			  <script src="{{ asset('public/js/jquery.min.js') }}"></script>
-				<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-			<script type="text/javascript">
-				jQuery(document).ready(function(){
-				    jQuery.get("http://ipinfo.io/202.88.237.138", function (response)
-				               {
-				                   var lats = response.loc.split(',')[0]; 
-				                   var lngs = response.loc.split(',')[1];
-
-				                   alert(lats+' '+lngs);
-				                   // map = new GMaps({
-				                   //     el: '#map',
-				                   //     lat: lats, //latitude
-				                   //     lng: lngs //longitude
-				                   // });
-
-				               }, "jsonp");
-				});
-			</script>
+<iframe width="420" height="315" src="https://www.facebook.com/" frameborder="0" allowfullscreen></iframe
+</body>
+</html>
