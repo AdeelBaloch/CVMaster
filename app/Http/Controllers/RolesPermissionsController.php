@@ -126,9 +126,6 @@ class RolesPermissionsController extends Controller
     public function SaveRoles()
     {
 
-        // echo "<pre>";
-        // print_r(Input::get());
-        // die;
         $iUserId = Input::get('UserId');
         $aUserRoles='';
         $aUserRoles = (object) $aUserRoles;

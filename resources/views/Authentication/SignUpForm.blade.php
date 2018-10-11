@@ -73,7 +73,6 @@
 			
 			if(EmailAddress !='' && UserName !='' && Password !='' && RPassword !='')
 			{
-				// alert(Password+"=="+RPassword);
 				if(Password === RPassword) 
 				{ 
 						

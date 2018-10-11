@@ -11,18 +11,25 @@
      td{border-top: none;}
  </style>
      <link rel="stylesheet" type="text/css" media="all" href="{{ asset('public/css/bootstrap.min.css') }}" />
-    <style type="text/css">
-    @media print
-    {
-    body * { visibility: hidden; }
+    <style type="text/css" media="print">
+ 
+    a[href]:after {
+        content: none !important;
+    }
     .div2 * { visibility: visible; }
     .div2 { position: absolute; top: 40px; left: 30px; }
+    @page {
+        size: auto;   /* auto is the initial value */
+        margin: 0;  /* this affects the margin in the printer settings */
+    }
+    .noprint{
+       display:none;
     }
     </style>
 </head>
 <body>
-    <a href="{{ route('GaneratePdf').'/'.$Candidate->InfoId }}" id="DownloadPdfId" class="btn btn-default pull-right">Download Pdf File</a>
-<button id="PrintReportId" onclick="window.print();" class="btn btn-default pull-right">Ganerate Print File</button>
+    <a href="{{ route('GaneratePdf').'/'.$Candidate->InfoId }}" id="DownloadPdfId" class="btn btn-default pull-right noprint">Download Pdf File</a>
+<button id="PrintReportId" onclick="window.print();" class="btn btn-default pull-right noprint">Ganerate Print File</button>
 <br><br><br><br><br><br>
 
 

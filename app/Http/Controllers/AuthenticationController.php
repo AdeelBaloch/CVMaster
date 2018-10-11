@@ -8,6 +8,7 @@ use DB;
 use Session;
 use Redirect;
 use Crypt;
+use App\User;
 
 class AuthenticationController extends Controller
 {
@@ -28,26 +29,27 @@ class AuthenticationController extends Controller
     public function Authentication()
     {
     	$UserName = Input::get('username');
-    	$Password = Input::get('pass');
+	    $Password = Input::get('pass');
         
-        $ObjAction = DB::table("users")->where(["UserName"=>$UserName,"Password"=>$Password]);
-
-    	if($ObjAction->count()) :
-            $iUserId = $ObjAction->first()->UserId;
-            Session::put("UserId",$iUserId);
-            DB::table('users')->where('UserId',$iUserId)->update(['LastLoggedInDateTime' => date("Y-m-d H:i:s")]);
-            $this->ObjUser->AddLog("User LoggedIn Successfully");
-          
-            return ["URL"=>route("home")];
-         else :
-            return ["Message"=>"UserName Or Passowrd Invalid."];
-    	endif;
+        $ObjAction = User::where(["UserName"=>$UserName,"Password"=>$Password])->first();
+        
+        if($ObjAction->count()) :
+                $ObjAction->LastLoggedInDateTime = date("Y-m-d H:i:s");
+                $ObjAction->save();
+                Session::put("UserId",$ObjAction->UserId);
+        
+                $this->ObjUser->AddLog("User LoggedIn Successfully");
+                return ["URL"=>route("home")];
+        else :
+                return ["Message"=>"UserName Or Passowrd Invalid."];
+	    endif;
     }
 
     public function Logout()
     {
-	 	$TimeUpdated = DB::table("users")->where("UserId",Session::get('UserId'))->update(['LastLoggedOutDateTime'=> date("Y-m-d H:i:s")]);
-        if($TimeUpdated) : 
+        $ObjAction = User::find(Session::get('UserId'));
+        $ObjAction->LastLoggedOutDateTime = date("Y-m-d H:i:s");
+        if($ObjAction->save()) :
             $this->ObjUser->AddLog("User Logout Successfully");
             Session::forget("UserId");
             Session::flash("msg",'Logged Out Success..!');
@@ -60,19 +62,29 @@ class AuthenticationController extends Controller
 
     public function SignUp()
     {
-        
+       
         $sFirstName = Input::get('Fname');
         $sLastName = Input::get('Lname');
         $sEmailAddress = Input::get('EmailAddress');
         $sUserName = Input::get('UserName');
         $sPassword = Input::get('Password');
-        
-        
-        if(DB::table('users')->orwhere(["UserName"=>$sUserName,"EmailAddress"=>$sEmailAddress])->count()){
+
+        $ObjAction = User::Orwhere(["UserName"=>$sUserName,"EmailAddress"=>$sEmailAddress]);
+        if($ObjAction->count()){
             return ["Message"=>"User Account Already Exists."];
-        }else{
-            if( $iUserId = DB::table('users')->insertGetId(["EmailAddress"=>$sEmailAddress,"UserName"=>$sUserName,"Password"=>$sPassword,"FirstName"=>$sFirstName,"LastName"=>$sLastName,"IsNewUser"=>1])){
-                Session::put("UserId",$iUserId);
+        }else
+        {
+            $ObjAction = new  User();
+            $ObjAction->UserName = $sUserName;
+            $ObjAction->Password = $sPassword;
+            $ObjAction->FirstName = $sFirstName;
+            $ObjAction->LastName = $sLastName;
+            $ObjAction->EmailAddress = $sEmailAddress;
+            $ObjAction->IsNewUser = 1;
+            $ObjAction->save();
+       
+            if($ObjAction->UserId){
+                Session::put("UserId",$ObjAction->UserId);
                 $this->ObjUser->AddLog("New Account has Been Created");
                 $this->ObjEmail->SendEmail(["Name"=>$sFirstName.' '.$sLastName,"Message"=>"Your Demo Account has been created"],$sEmailAddress,"Account has been created");
                 return ["URL"=>route("home")];
