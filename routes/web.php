@@ -28,6 +28,7 @@ Route::get('Ajax/GetDomicile',"AjaxController@GetDomicile")->name("GetDomicile")
 // CV Managment Requests 
 Route::get('Ajax/CV/View/{Id?}',"CvController@ViewCV")->name("ViewCV");
 Route::get('Ajax/Ganerate/Pdf/{InfoId?}',"PDFController@GaneratePDF")->name("GaneratePdf");
+Route::get('Ajax/Ganerate/Word/{InfoId?}',"MSWordController@GanerateWord")->name("GanerateWord");
 Route::post('Ajax/CV/Add',"CvController@AddCV")->name("AddCV");
 Route::get('Ajax/CV/edit/{Id?}',"CvController@EditCV")->name("EditCV");
 Route::post('Ajax/CV/UpdateCV',"CvController@UpdateCV")->name("UpdateCV");

@@ -22,7 +22,7 @@ class PDFController extends Controller
     public function  GaneratePDF($InfoId)
     {
 
-		    $FileName = $this->ObjCV->GetBasicInfo($InfoId)->FirstName." ".$this->ObjCV->GetBasicInfo($InfoId)->LastName;
+		    $FileName = $this->ObjCV->GetBasicInfo($InfoId)->FirstName." ".$this->ObjCV->GetBasicInfo($InfoId)->LastName.".PDF";
 
         $pdf =  PDF::loadHTML($this->ObjCV->ViewCV($InfoId))->setPaper('A4', 'legal')->setWarnings(false)->save($FileName);
         PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);

@@ -28,7 +28,8 @@
     </style>
 </head>
 <body>
-    <a href="{{ route('GaneratePdf').'/'.$Candidate->InfoId }}" id="DownloadPdfId" class="btn btn-default pull-right noprint">Download Pdf File</a>
+    <a href="{{ route('GaneratePdf').'/'.$Candidate->InfoId }}" id="DownloadPdfId" class="btn btn-default pull-right noprint">Download PDF</a>
+    <a href="{{ route('GanerateWord').'/'.$Candidate->InfoId }}" id="DownloadPdfId" class="btn btn-default pull-right noprint">Download WORD</a>
 <button id="PrintReportId" onclick="window.print();" class="btn btn-default pull-right noprint">Ganerate Print File</button>
 <br><br><br><br><br><br>
 
