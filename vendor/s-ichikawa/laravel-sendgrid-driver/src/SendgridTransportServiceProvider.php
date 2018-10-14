@@ -27,8 +27,7 @@ class SendgridTransportServiceProvider extends ServiceProvider
             $config = $this->app['config']->get('services.sendgrid', array());
             $client = new HttpClient(Arr::get($config, 'guzzle', []));
 
-            return new SendgridTransport($client, env('SENDGRID_API_KEY'));
-
+            return new SendgridTransport($client, $config['api_key']);
         });
     }
 }
